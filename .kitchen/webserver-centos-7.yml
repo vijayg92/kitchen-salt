@@ -1,0 +1,9 @@
+---
+username: kitchen
+ssh_key: "/Users/vj/Desktop/kitchen-salt/.kitchen/docker_id_rsa"
+image_id: sha256:f50d73aef317f2aa6bcff5cfee6555cca1c6d386c47fc098ba6dc5051df6bda8
+container_id: ba5f17cfb63adf0a3ae4cc04765fe8956f5d2c711ddcbc5dbc0e9d5a77016d1a
+hostname: localhost
+port: 54546
+last_action: create
+last_error: 
