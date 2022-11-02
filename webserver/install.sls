@@ -18,5 +18,6 @@
     - gid: {{ pillar['gid'] }}
     - home: {{ pillar['doc_root'] }}
     - shell: /bin/nologin
+    - allow_uid_change: true
     - require:
       - group: {{ sls }}.group

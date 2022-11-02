@@ -2,6 +2,7 @@ driver:
   name: docker
   use_sudo: false
   privileged: true
+  run_command: /usr/sbin/init
   forward:
     - 80
 
@@ -28,6 +29,11 @@ provisioner:
   pillars_from_directories:
     - source: pillars/
       dest: srv/pillar/
+  pillars:
+    top.sls:
+      base:
+        '*':
+          - webserver
 
 platforms:
   - name: centos-7
@@ -37,7 +43,7 @@ suites:
     provisioner:
       salt_bootstrap_options: -qX -p git -p curl -p sudo git 3004.2
 
-#verifier:
-#  name: shell
-#  remote_exec: false
-#  command: pytest -v tests/integration/
+verifier:
+  name: shell
+  remote_exec: false
+  command: python3 -m pytest -v tests/

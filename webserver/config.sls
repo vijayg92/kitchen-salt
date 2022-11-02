@@ -5,7 +5,7 @@ include:
 
 {{ sls }}.index.html:
   file.managed:
-    - name: {{ pillar['doc_root'] }}
+    - name: {{ pillar['doc_root'] }}/index.html
     - source: salt://webserver/files/index.html
     - require:
       - sls: webserver.install

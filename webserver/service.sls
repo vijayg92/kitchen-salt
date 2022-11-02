@@ -7,7 +7,6 @@ include:
 {{ sls }}.webserver.service:
   service.running:
     - name: {{ vars['service'] }}
-    - enabled: true
     - watch:
       - sls: webserver.install
       - sls: webserver.config
