@@ -2,7 +2,6 @@ driver:
   name: docker
   use_sudo: false
   privileged: true
-  run_command: /usr/sbin/init
   forward:
     - 80
 
@@ -36,8 +35,12 @@ provisioner:
           - webserver
 
 platforms:
-  - name: centos-7
-
+  - name: centos
+    driver:
+      image: centos/systemd
+      privileged: true
+      userns_host: true
+      
 suites:
   - name: webserver
     provisioner:

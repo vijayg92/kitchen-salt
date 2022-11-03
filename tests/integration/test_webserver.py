@@ -3,26 +3,18 @@
 import requests
 
 def test_apache_service(host):
-    '''
-    make sure httpd is running.
-    '''
+    ''' To check Http Service '''
     assert host.service('httpd')
 
-#def test_index_file(host):
-#    '''
-#    make sure index.html file is correct
-#    '''
-#    index = host.file('/var/www/html/index.html')
-#    assert index.contains('Demo worked!')
-#
-#def test_website_200(url):
-#    '''
-#    test http 200 code
-#    '''
-#    assert requests.get(url).status_code == 200
-#
-#def test_website_content(url):
-#    '''
-#    test content of website
-#    '''
-#    assert 'Demo worked!' in requests.get(url).text
+def test_index_file(host):
+    ''' To check index.html file '''
+    index = host.file('/var/www/html/index.html')
+    assert index.contains('Demo SaltStack TestKitchen')
+
+def test_website_200(url):
+    ''' To check status code '''
+    assert requests.get(url).status_code == 200
+
+def test_website_content(url):
+    ''' To validate content of webserver'''
+    assert 'Demo SaltStack TestKitchen' in requests.get(url).text
