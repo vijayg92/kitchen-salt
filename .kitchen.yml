@@ -2,6 +2,7 @@ driver:
   name: docker
   use_sudo: false
   privileged: true
+  run_command: /usr/sbin/init
   forward:
     - 80
 
@@ -14,13 +15,9 @@ provisioner:
   require_chef: false
   salt_copy_filter:
     - .git
-    - .gitignore
     - .kitchen
-    - .kitchen.yml
-    - Gemfile
     - Gemfile.lock
-    - requirements.txt
-    - tests
+    - pytests_cache
   state_top:
     base:
       "*":
@@ -35,12 +32,9 @@ provisioner:
           - webserver
 
 platforms:
-  - name: centos
-    driver:
-      image: centos/systemd
-      privileged: true
-      userns_host: true
-      
+  - name: centos-7
+  - name: ubuntu
+
 suites:
   - name: webserver
     provisioner:
